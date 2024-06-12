@@ -11,6 +11,7 @@ class sebhaTab extends StatefulWidget {
 class _sebhaTabState extends State<sebhaTab> {
    int counter=0;
    int index=0;
+   double angle=0;
 
   List<String>tsbeh=["الحمدلله","لا اله الا الله","سبحان الله"];
 
@@ -23,37 +24,40 @@ class _sebhaTabState extends State<sebhaTab> {
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-          InkWell(
-            onTap: () {
-              azkar();
-            },
-            child: Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 50),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      "assets/images/headsebha.png",
-                      width: 70,
-                      height: 105,
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    "assets/images/headsebha.png",
+                    width: 70,
+                    height: 105,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 75),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: GestureDetector(
+                    onTap: () {
+                      azkar();
+                    },
+                    child: Transform.rotate(
+                      angle: angle,
+                      child: Image.asset(
+                        "assets/images/sebha.png",
+                        width: 232,
+                        height: 234,
+                      ),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 75),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      "assets/images/sebha.png",
-                      width: 232,
-                      height: 234,
-                    ),
-                  ),
-                ),
+              ),
 
-              ],
-            ),
+            ],
           ),
 
               SizedBox(height: 20,),
@@ -112,7 +116,9 @@ class _sebhaTabState extends State<sebhaTab> {
         index=0;
       }
     }else{
+
       counter++;
+      angle++;
     }
     setState(() {
 
